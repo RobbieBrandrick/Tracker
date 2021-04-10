@@ -1,0 +1,11 @@
+{
+    "git.ignoreLimitWarning": true,
+    "vetur.format.defaultFormatter.js": "prettier-eslint",
+    "editor.tabSize": 2,
+    "javascript.preferences.quoteStyle": "single",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.alwaysShowStatus": true,
+    "eslint.format.enable": true,
+}

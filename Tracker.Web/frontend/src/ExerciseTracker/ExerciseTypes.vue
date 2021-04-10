@@ -1,0 +1,49 @@
+<template>
+  <div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="exerciseType">Exercise</label>
+        <select id="exerciseType" class="form-control" v-model="selected">
+          <option
+            v-for="(type, index) in exerciseTypes"
+            :key="index"
+            v-bind:value="index"
+          >
+            {{ type }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import ExerciseTypesMixins from '@/mixins/exercise-types-mixin';
+import CurrentSessionMixin from '@/mixins/session-mixin';
+
+export default {
+  name: 'ExerciseTypes',
+  mixins: [ExerciseTypesMixins, CurrentSessionMixin],
+  props: {
+    exerciseId: Number,
+  },
+  data() {
+    return {
+      selected: 0,
+    };
+  },
+  mounted() {
+    const exercise = this.getExercise()(this.exerciseId);
+
+    this.selected = exercise.typeId;
+  },
+  updated() {
+    this.updateExerciseType({ exerciseId: this.exerciseId, typeId: this.selected });
+  },
+  computed: {
+    types() {
+      return this.exerciseTypes;
+    },
+  },
+};
+</script>
