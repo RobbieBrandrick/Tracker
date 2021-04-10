@@ -1,4 +1,7 @@
 export default ({
+  state: {
+    newSetId: 0,
+  },
   getters: {
     getSet: (state, getters) => (exerciseId, setId) => {
       const sets = getters.getSets(exerciseId);
@@ -9,7 +12,7 @@ export default ({
   mutations: {
     addSet(state, sets) {
       sets.push({
-        id: sets.length,
+        id: state.newSetId,
         weight: 0,
         reps: 0,
         rpe: 0,
@@ -26,11 +29,15 @@ export default ({
       set.reps = reps;
       set.rpe = rpe;
     },
+    incrementNewSetId(state) {
+      state.newSetId += 1;
+    },
   },
   actions: {
     addSet({ commit, getters }, exerciseId) {
       const sets = getters.getSets(exerciseId);
       commit('addSet', sets);
+      commit('incrementNewSetId');
     },
     removeSet({ commit, getters }, details) {
       const { exerciseId, setId } = details;

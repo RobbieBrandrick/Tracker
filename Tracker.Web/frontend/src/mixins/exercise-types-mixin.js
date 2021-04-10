@@ -6,7 +6,7 @@ export default {
   },
   computed: {
     ...mapState('exerciseTypes', {
-      exerciseTypes: 'types',
+      exerciseTypes: 'exerciseTypes',
     }),
   },
   methods: {

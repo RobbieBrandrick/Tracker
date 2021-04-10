@@ -69,7 +69,7 @@ export default {
       };
     },
     remove() {
-      this.removeSet(this.setId);
+      this.removeSet({ exerciseId: this.exerciseId, setId: this.setId });
     },
   },
 };

@@ -40,10 +40,5 @@ export default {
   updated() {
     this.updateExerciseType({ exerciseId: this.exerciseId, typeId: this.selected });
   },
-  computed: {
-    types() {
-      return this.exerciseTypes;
-    },
-  },
 };
 </script>
