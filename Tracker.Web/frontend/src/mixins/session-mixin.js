@@ -10,16 +10,16 @@ export default {
     ...mapGetters('session', {
       getExercise: 'getExercise',
       getExercises: 'getExercises',
-      getSets: 'getSets',
-      getSet: 'getSet',
+      getExerciseSets: 'getExerciseSets',
+      getExerciseSet: 'getExerciseSet',
     }),
     ...mapMutations('session', {}),
     ...mapActions('session', {
       updateExerciseType: 'updateExerciseType',
       addExerciseToRepo: 'addExercise',
-      addSet: 'addSet',
-      removeSet: 'removeSet',
-      updateSet: 'updateSet',
+      addExerciseSet: 'addExerciseSet',
+      removeExerciseSet: 'removeExerciseSet',
+      updateExerciseSet: 'updateExerciseSet',
     }),
   },
 };

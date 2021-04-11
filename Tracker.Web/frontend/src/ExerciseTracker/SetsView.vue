@@ -20,18 +20,18 @@ export default {
   },
   computed: {
     sets() {
-      const sets = this.getSets()(this.exerciseId);
+      const sets = this.getExerciseSets()(this.exerciseId);
 
       return sets;
     },
   },
   methods: {
     add() {
-      this.addSet(this.exerciseId);
+      this.addExerciseSet(this.exerciseId);
     },
   },
   mounted() {
-    this.addSet(this.exerciseId);
+    this.addExerciseSet(this.exerciseId);
   },
 };
 </script>

@@ -46,17 +46,12 @@ export default {
     exerciseId: Number,
     setId: Number,
   },
-  data() {
-    return {
-      set: {},
-    };
-  },
-  updated() {
-    this.updateSet(this.getDetails());
-  },
-  mounted() {
-    const test = this.getSet()(this.exerciseId, this.setId);
-    this.set = test;
+  computed: {
+    set() {
+      const set = this.getExerciseSet()(this.exerciseId, this.setId);
+
+      return set;
+    },
   },
   methods: {
     getDetails() {
@@ -69,7 +64,7 @@ export default {
       };
     },
     remove() {
-      this.removeSet({ exerciseId: this.exerciseId, setId: this.setId });
+      this.removeExerciseSet({ exerciseId: this.exerciseId, setId: this.setId });
     },
   },
 };

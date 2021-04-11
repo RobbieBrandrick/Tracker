@@ -5,7 +5,7 @@ export default {
       const exercise = exercises.find((e) => e.id === exerciseId);
       return exercise;
     },
-    getSets: (state, getters) => (exerciseId) => {
+    getExerciseSets: (state, getters) => (exerciseId) => {
       const exercise = getters.getExercise(exerciseId);
       return exercise.sets;
     },
