@@ -4,7 +4,11 @@
       <ExerciseView :exerciseId="exercise.id" />
     </div>
 
-    <button @click="addExerciseToRepo">Add Exercise</button>
+    <div class="form-group col-md-3">
+      <button class="btn btn-primary" @click="addExerciseToRepo">
+        Add Exercise
+      </button>
+    </div>
   </div>
 </template>
 

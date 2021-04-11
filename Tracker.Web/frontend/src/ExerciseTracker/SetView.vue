@@ -29,7 +29,8 @@
         />
       </div>
       <div class="form-group col-md-3">
-        <button class="btn btn-danger" @click="remove">x</button>
+        <label for="">Remove</label>
+        <button class="btn btn-danger form-control" @click="remove">x</button>
       </div>
     </div>
   </div>

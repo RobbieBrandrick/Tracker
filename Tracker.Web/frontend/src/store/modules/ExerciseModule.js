@@ -14,18 +14,18 @@ export default {
     addExercise(state, exercises) {
       exercises.push({
         id: exercises.length,
-        typeId: 0,
+        exerciseType: 0,
         sets: [],
       });
     },
     removeExercise(state, details) {
-      const { exercises, id } = details;
-      const index = exercises.findIndex((e) => e.id === id);
+      const { exercises, exerciseId } = details;
+      const index = exercises.findIndex((e) => e.id === exerciseId);
       exercises.splice(index, 1);
     },
     updateExerciseType(state, typeDetails) {
-      const { exercise } = typeDetails;
-      exercise.typeId = typeDetails.typeId;
+      const { exercise, exerciseType } = typeDetails;
+      exercise.exerciseType = exerciseType;
     },
   },
   actions: {
@@ -33,13 +33,13 @@ export default {
       const exercises = getters.getExercises();
       commit('addExercise', exercises);
     },
-    removeExercise({ commit, getters }, id) {
+    removeExercise({ commit, getters }, exerciseId) {
       const exercises = getters.getExercises();
-      commit('removeExercise', { exercises, id });
+      commit('removeExercise', { exercises, exerciseId });
     },
     updateExerciseType({ commit, getters }, typeDetails) {
       const exercise = getters.getExercise(typeDetails.exerciseId);
-      commit('updateExerciseType', { typeId: typeDetails.typeId, exercise });
+      commit('updateExerciseType', { exerciseType: typeDetails.exerciseType, exercise });
     },
   },
 };

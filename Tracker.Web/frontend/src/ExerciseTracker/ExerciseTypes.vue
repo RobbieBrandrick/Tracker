@@ -7,7 +7,7 @@
           <option
             v-for="(type, index) in exerciseTypes"
             :key="index"
-            v-bind:value="index"
+            v-bind:value="type"
           >
             {{ type }}
           </option>
@@ -29,16 +29,16 @@ export default {
   },
   data() {
     return {
-      selected: 0,
+      selected: '',
     };
   },
   mounted() {
     const exercise = this.getExercise()(this.exerciseId);
 
-    this.selected = exercise.typeId;
+    this.selected = exercise.exerciseType;
   },
   updated() {
-    this.updateExerciseType({ exerciseId: this.exerciseId, typeId: this.selected });
+    this.updateExerciseType({ exerciseId: this.exerciseId, exerciseType: this.selected });
   },
 };
 </script>

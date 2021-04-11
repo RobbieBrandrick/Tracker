@@ -3,7 +3,9 @@
     <div v-for="(set, index) in sets" :key="index">
       <SetView :exerciseId="exerciseId" :setId="set.id" />
     </div>
-    <button class="btn btn-primary" @click="add">+</button>
+    <div class="form-group col-md-3">
+      <button class="btn btn-primary" @click="add">+</button>
+    </div>
   </div>
 </template>
 

@@ -17,6 +17,7 @@ export default {
     ...mapActions('session', {
       updateExerciseType: 'updateExerciseType',
       addExerciseToRepo: 'addExercise',
+      removeExercise: 'removeExercise',
       addExerciseSet: 'addExerciseSet',
       removeExerciseSet: 'removeExerciseSet',
       updateExerciseSet: 'updateExerciseSet',
