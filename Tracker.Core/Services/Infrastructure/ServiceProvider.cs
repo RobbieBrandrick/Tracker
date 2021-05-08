@@ -1,7 +1,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tracker.Core.Data;
+using Tracker.Core.Models.ExerciseTracker;
 using Tracker.Core.Models.Infrastructure.Settings;
+using Tracker.Core.Services.ExerciseTracker;
 
 namespace Tracker.Core.Services.Infrastructure
 {
@@ -45,7 +47,10 @@ namespace Tracker.Core.Services.Infrastructure
 
             IServiceCollection collection = new ServiceCollection()
                 .Configure<ConnectionStrings>(configuration.GetSection(ConnectionStrings.ConfigSection))
-                .AddDbContext<TrackerDbContext>();
+                .AddDbContext<TrackerDbContext>()
+                .AddScoped<ISessionService, SessionService>()
+                .AddScoped<IExerciseTypesService, ExerciseTypesService>()
+                ;
 
             return collection;
             

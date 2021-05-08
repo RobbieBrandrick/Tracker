@@ -9,6 +9,6 @@ namespace Tracker.Core.Models.ExerciseTracker
         public DateTime CreateDate { get; set; }
         public long Duration { get; set; }
 
-        public ICollection<ExerciseEntry> Entries { get; set; }
+        public ICollection<Exercise> Exercises { get; set; }
     }
 }

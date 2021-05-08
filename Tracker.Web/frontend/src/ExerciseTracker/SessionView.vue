@@ -1,14 +1,28 @@
 <template>
   <div>
-    <div v-for="(exercise, index) in exercises" :key="index">
-      <ExerciseView :exerciseId="exercise.id" />
+
+    <div class="row">
+      <div class="col">
+        <div v-for="(exercise, index) in exercises" :key="index">
+          <ExerciseView :exerciseId="exercise.id" />
+        </div>
+      </div>
     </div>
 
-    <div class="form-group col-md-3">
-      <button class="btn btn-primary" @click="addExerciseToRepo">
-        Add Exercise
-      </button>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" @click="addExerciseToRepo">
+          Add Exercise
+        </button>
+        <button class="btn btn-success" @click="saveSession">
+          Save Session
+        </button>
+        <button class="btn btn-danger" @click="clearSession">
+          Clear Session
+        </button>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -20,5 +34,24 @@ export default {
   name: 'SessionView',
   mixins: [CurrentSessionMixin],
   components: { ExerciseView },
+  data() {
+    return {
+      timer: '',
+    };
+  },
+  created() {
+    this.timer = setInterval(this.autoSaveSession, 300000);
+  },
+  methods: {
+    autoSaveSession() {
+      this.saveSession();
+    },
+    cancelAutoSave() {
+      clearInterval(this.timer);
+    },
+  },
+  beforeDestroy() {
+    this.cancelAutoUpdate();
+  },
 };
 </script>

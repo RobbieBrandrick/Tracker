@@ -5,17 +5,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.5" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-      <Folder Include="frontend" />
+      <ProjectReference Include="..\Tracker.Core\Tracker.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Tracker.Core\Tracker.Core.csproj" />
+      <None Update="TrackerDb.db">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <PropertyGroup>

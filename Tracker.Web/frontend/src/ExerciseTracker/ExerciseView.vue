@@ -2,14 +2,19 @@
   <div :id="'ExerciseView_' + ucid">
     <div class="card">
       <div class="card-header">
-        <h5 @click="show = !show">{{ exerciseType }}</h5>
-        <button type="button" class="close" @click="remove">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button @click="remove" type="button" class="btn-close float-end" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+        <h5 class="" @click="show = !show">{{ exerciseType }}</h5>
       </div>
       <div class="card-body" v-show="show">
-        <ExerciseTypes :exerciseId="exerciseId" />
-        <SetsView :exerciseId="exerciseId" />
+        <div class="row">
+          <div class="col-md-2">
+            <ExerciseTypes :exerciseId="exerciseId" />
+          </div>
+          <div class="col-md-8">
+            <SetsView :exerciseId="exerciseId" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

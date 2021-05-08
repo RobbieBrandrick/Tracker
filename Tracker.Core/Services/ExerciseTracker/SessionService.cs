@@ -6,36 +6,33 @@ using Tracker.Core.Models.ExerciseTracker;
 
 namespace Tracker.Core.Services.ExerciseTracker
 {
-    public class SessionService
+    public interface ISessionService
+    {
+        IQueryable<Session> Get();
+        Task<Session> AddOrUpdate(Session session);
+    }
+
+    public class SessionService : ISessionService
     {
         private readonly TrackerDbContext _dbContext;
 
         public SessionService(TrackerDbContext dbContext)
         {
-            
             _dbContext = dbContext;
-            
         }
 
         public IQueryable<Session> Get()
         {
             return _dbContext.Sessions;
         }
-        
-        public async Task<Session> Add()
+
+        public async Task<Session> AddOrUpdate(Session session)
         {
-
-            Session session = new Session()
-            {
-                CreateDate = DateTime.Now
-            };
-
             await _dbContext.Sessions.AddAsync(session);
 
             await _dbContext.SaveChangesAsync();
 
             return session;
-
-        }        
+        }
     }
 }

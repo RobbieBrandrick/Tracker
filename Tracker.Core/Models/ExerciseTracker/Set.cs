@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace Tracker.Core.Models.ExerciseTracker
 {
     public class Set
@@ -6,5 +8,7 @@ namespace Tracker.Core.Models.ExerciseTracker
         public double Weight { get; set; }
         public int Reps { get; set; }
         public int RPE { get; set; }
+
+        public ExerciseSet Exercise { get; set; }
     }
 }

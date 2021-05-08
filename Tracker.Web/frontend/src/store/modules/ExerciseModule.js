@@ -5,10 +5,6 @@ export default {
       const exercise = exercises.find((e) => e.id === exerciseId);
       return exercise;
     },
-    getExerciseSets: (state, getters) => (exerciseId) => {
-      const exercise = getters.getExercise(exerciseId);
-      return exercise.sets;
-    },
   },
   mutations: {
     addExercise(state, exercises) {
@@ -29,17 +25,20 @@ export default {
     },
   },
   actions: {
-    addExercise({ commit, getters }) {
+    addExercise({ commit, dispatch, getters }) {
       const exercises = getters.getExercises();
       commit('addExercise', exercises);
+      dispatch('saveSessionToLocalStorage');
     },
-    removeExercise({ commit, getters }, exerciseId) {
+    removeExercise({ commit, dispatch, getters }, exerciseId) {
       const exercises = getters.getExercises();
       commit('removeExercise', { exercises, exerciseId });
+      dispatch('saveSessionToLocalStorage');
     },
-    updateExerciseType({ commit, getters }, typeDetails) {
+    updateExerciseType({ commit, dispatch, getters }, typeDetails) {
       const exercise = getters.getExercise(typeDetails.exerciseId);
       commit('updateExerciseType', { exerciseType: typeDetails.exerciseType, exercise });
+      dispatch('saveSessionToLocalStorage');
     },
   },
 };

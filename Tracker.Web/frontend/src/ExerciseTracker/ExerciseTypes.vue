@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div class="form-row">
-      <div class="form-group col-md-3">
+    <div class="row">
+      <div class="col">
         <label for="exerciseType">Exercise</label>
-        <select id="exerciseType" class="form-control" v-model="selected">
+        <AddExerciseTypeModal />
+        <select id="exerciseType" class="form-select" v-model="selected">
           <option
             v-for="(type, index) in exerciseTypes"
             :key="index"
@@ -20,10 +21,12 @@
 <script>
 import ExerciseTypesMixins from '@/mixins/exercise-types-mixin';
 import CurrentSessionMixin from '@/mixins/session-mixin';
+import AddExerciseTypeModal from './AddExerciseType.vue';
 
 export default {
   name: 'ExerciseTypes',
   mixins: [ExerciseTypesMixins, CurrentSessionMixin],
+  components: { AddExerciseTypeModal },
   props: {
     exerciseId: Number,
   },

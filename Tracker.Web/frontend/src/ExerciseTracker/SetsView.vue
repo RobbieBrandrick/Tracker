@@ -1,10 +1,16 @@
 <template>
   <div>
-    <div v-for="(set, index) in sets" :key="index">
-      <SetView :exerciseId="exerciseId" :setId="set.id" />
+    <div class="row">
+      <div class="col">
+        <div v-for="(set, index) in sets" :key="index">
+          <SetView :exerciseId="exerciseId" :setId="set.id" />
+        </div>
+      </div>
     </div>
-    <div class="form-group col-md-3">
-      <button class="btn btn-primary" @click="add">+</button>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" @click="this.add">Add Set</button>
+      </div>
     </div>
   </div>
 </template>
@@ -23,17 +29,16 @@ export default {
   computed: {
     sets() {
       const sets = this.getExerciseSets()(this.exerciseId);
-
-      return sets;
+      return sets
+        .slice()
+        .sort((lhs, rhs) => lhs.order - rhs.order);
     },
   },
   methods: {
     add() {
-      this.addExerciseSet(this.exerciseId);
+      const details = { exerciseId: this.exerciseId, order: this.sets.length };
+      this.addExerciseSet(details);
     },
-  },
-  mounted() {
-    this.addExerciseSet(this.exerciseId);
   },
 };
 </script>

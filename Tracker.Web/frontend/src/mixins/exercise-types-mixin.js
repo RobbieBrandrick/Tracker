@@ -2,7 +2,7 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   created() {
-    this.get();
+    this.getExerciseTypes();
   },
   computed: {
     ...mapState('exerciseTypes', {
@@ -10,6 +10,9 @@ export default {
     }),
   },
   methods: {
-    ...mapActions('exerciseTypes', ['get']),
+    ...mapActions('exerciseTypes', [
+      'getExerciseTypes',
+      'addExerciseType',
+    ]),
   },
 };
